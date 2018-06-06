@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+
+def jackson_version = '2.9.5'
+def issue_jackson_version = '2.9.0.pr1'
+dependencies {
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: jackson_version
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: jackson_version
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: jackson_version
+    compile group: 'com.fasterxml.jackson.module', name: 'jackson-module-parameter-names', version: jackson_version
+
+    testCompile 'junit:junit:4.12'
+}
+repositories {
+    jcenter()
+}
+
+tasks.withType(JavaCompile) {
+    options.compilerArgs += '-parameters'
+}
